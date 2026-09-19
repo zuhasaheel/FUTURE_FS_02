@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZS CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <p class="login-tag">✈ Admin Access</p>
+      <h1 class="login-title">ZS CRM</h1>
+      <p class="login-sub">Client Lead Manager</p>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit" class="btn-primary">Log In →</button>
+      </form>
+      <p id="loginError" class="login-error"></p>
+      <p class="login-hint">Demo credentials — Username: <strong>admin</strong> · Password: <strong>admin123</strong></p>
+    </div>
+  </div>
+
+  <div id="dashboardScreen" class="dashboard-screen" style="display: none;">
+    <header class="topbar">
+      <div>
+        <h1>📊 ZS CRM</h1>
+      </div>
+      <button id="logoutBtn" class="logout-btn">Log Out</button>
+    </header>
+
+    <main class="container">
+      <section class="add-lead-card">
+        <h2>Add New Lead</h2>
+        <form id="leadForm">
+          <input type="text" id="name" placeholder="Full Name" required />
+          <input type="email" id="email" placeholder="Email Address" required />
+          <input type="text" id="phone" placeholder="Phone Number" />
+          <input type="text" id="source" placeholder="Source (e.g. Website, Referral)" />
+          <button type="submit" class="btn-primary">Add Lead</button>
+        </form>
+      </section>
+
+      <section class="stats-bar">
+        <button class="stat-pill active" data-filter="all">
+          <span class="stat-pill-num" id="countAll">0</span>
+          <span class="stat-pill-label">All</span>
+        </button>
+        <button class="stat-pill pill-new" data-filter="new">
+          <span class="stat-pill-num" id="countNew">0</span>
+          <span class="stat-pill-label">New</span>
+        </button>
+        <button class="stat-pill pill-contacted" data-filter="contacted">
+          <span class="stat-pill-num" id="countContacted">0</span>
+          <span class="stat-pill-label">Contacted</span>
+        </button>
+        <button class="stat-pill pill-converted" data-filter="converted">
+          <span class="stat-pill-num" id="countConverted">0</span>
+          <span class="stat-pill-label">Converted</span>
+        </button>
+        <button class="stat-pill pill-lost" data-filter="lost">
+          <span class="stat-pill-num" id="countLost">0</span>
+          <span class="stat-pill-label">Lost</span>
+        </button>
+      </section>
+
+      <section class="leads-section">
+        <div class="leads-header">
+          <h2>Leads (<span id="leadCount">0</span>)</h2>
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search by name or email..." />
+        </div>
+
+        <div class="table-wrap">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody"></tbody>
+          </table>
+        </div>
+        <p id="emptyState" class="empty-state">No leads yet — add your first one above.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
